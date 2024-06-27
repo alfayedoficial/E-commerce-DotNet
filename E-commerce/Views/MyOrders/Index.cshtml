@@ -1,0 +1,35 @@
+﻿@model IEnumerable<E_Commerce.Models.OrderViewModel>
+
+@{
+    ViewData["Title"] = "My Orders";
+}
+
+<div class="container">
+    <h2>My Orders</h2>
+    @if (!Model.Any())
+    {
+        <p>You have no orders.</p>
+    }
+    else
+    {
+        @foreach (var order in Model)
+        {
+            <div class="card mb-3">
+                <div class="card-header">
+                    Order #@order.OrderId - @order.OrderDate.ToString("g")
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Total: $@order.TotalAmount.ToString("F2")</h5>
+                    <ul class="list-group list-group-flush">
+                        @foreach (var item in order.Items)
+                        {
+                            <li class="list-group-item">
+                                <strong>@item.ProductName</strong> - @item.Quantity x $@item.UnitPrice.ToString("F2")
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+    }
+</div>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<E_Commerce.Models.Slider>
+
+@{
+    ViewData["Title"] = "Sliders";
+}
+
+<div class="container">
+    <h2>Sliders</h2>
+    <a class="btn btn-primary mb-3" href="/Sliders/Create">Add New Slide</a>
+    @if (!Model.Any())
+    {
+        <p>No sliders available.</p>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var slider in Model)
+            {
+                <div class="col-12 mb-3">
+                    <div class="card">
+                        <div class="row no-gutters">
+                            <div class="col-md-2 d-flex align-items-center justify-content-center">
+                                <img src="@slider.Product.ImageUrl" class="card-img small-img" alt="@slider.Product.Name">
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body">
+                                    <h5 class="card-title">@slider.Product.Name</h5>
+                                    <p class="card-text">@slider.Product.Description</p>
+                                    <p class="card-text text-muted">Price: $@slider.Product.Price.ToString("F2")</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 d-flex align-items-center justify-content-center">
+                                <form asp-action="DeleteSlider" method="post">
+                                    <input type="hidden" name="id" value="@slider.Id" />
+                                    <button type="submit" class="btn btn-outline-danger">
+                                        <i class="fas fa-trash-alt"></i> Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+<style>
+    .small-img {
+        max-width: 100px;
+        max-height: 100px;
+    }
+</style>

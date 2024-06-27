@@ -1,0 +1,78 @@
+﻿html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+.footer {
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+    border-top: 1px solid #e5e5e5;
+    margin-top: auto; /* Ensure the footer is pushed to the bottom */
+    position: fixed;
+    width: -webkit-fill-available;
+    bottom: 0;
+}
+
+.navbar {
+    margin-bottom: 20px;
+    background-color: #1c1c1c; /* Dark background color */
+}
+
+.navbar-brand {
+    color: #ffffff !important; /* White logo text */
+    font-weight: bold;
+    font-size: 1.25rem;
+    padding-left: 20px; /* Add left padding */
+}
+
+.nav-link {
+    color: #b0b0b0 !important; /* Light grey nav links */
+    margin-right: 1rem;
+}
+
+    .nav-link:hover {
+        color: #ffffff !important; /* White on hover */
+    }
+
+.navbar .btn-primary {
+    background-color: #17a2b8; /* Custom button color */
+    border: none;
+}
+
+    .navbar .btn-primary:hover {
+        background-color: #138496; /* Darker shade on hover */
+    }
+
+.navbar .navbar-toggler {
+    border: none;
+}
+
+.navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%288, 8, 8, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.card-img-top {
+    height: 200px !important;
+    object-fit: contain !important;
+}

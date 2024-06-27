@@ -1,0 +1,48 @@
+﻿@model IEnumerable<E_Commerce.Models.Product>
+
+@{
+    ViewData["Title"] = "Admin - Manage Products";
+}
+
+<h2>Product List</h2>
+
+<a asp-action="AddProduct" class="btn btn-primary">Add New Product</a>
+<a href="/Sliders" class="btn btn-secondary">Manage Sliders</a> <!-- New button for sliders -->
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Picture</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(@item.ImageUrl))
+                    {
+                        <img src="@item.ImageUrl" alt="@item.Name" style="width: 100px; height: auto;" />
+                    }
+                    else
+                    {
+                        <span>No Image</span>
+                    }
+                </td>
+                <td>@item.Price.ToString("F2")</td>
+                <td>@item.Description</td>
+                <td>
+                    <form asp-action="DeleteProduct" method="post" style="display:inline">
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
